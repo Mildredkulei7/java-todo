@@ -43,11 +43,4 @@ pipeline {
             slackSend color: "danger", message: "Build #${BUILD_NUMBER} failed"
         }
     }
-        stage('Deploy to Heroku') {
-            steps {
-             withCredentials([usernameColonPassword(credentialsId: 'heroku', variable: 'HEROKU_CREDENTIALS' )]){
-             sh 'git push https://${HEROKU_CREDENTIALS}@git.heroku.com/jenkins-class-testing.git master'
-    }
-  }
-}
 }
